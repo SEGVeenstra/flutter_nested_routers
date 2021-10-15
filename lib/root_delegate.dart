@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nested_router_test/root_page.dart';
 
-class RootDelegate extends RouterDelegate<int> with ChangeNotifier, PopNavigatorRouterDelegateMixin<int> {
+class RootDelegate extends RouterDelegate<int>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<int> {
   var _pagesCount = 1;
 
   void increasePages() {
@@ -32,7 +33,7 @@ class RootDelegate extends RouterDelegate<int> with ChangeNotifier, PopNavigator
         ),
       ),
       onPopPage: (route, value) {
-        return _decreasePages();
+        return route.didPop(_decreasePages());
       },
     );
   }

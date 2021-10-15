@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nested_router_test/nested_page.dart';
 
-class NestedDelegate extends RouterDelegate<int> with ChangeNotifier, PopNavigatorRouterDelegateMixin<int> {
+class NestedDelegate extends RouterDelegate<int>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<int> {
   @override
   final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -34,7 +35,7 @@ class NestedDelegate extends RouterDelegate<int> with ChangeNotifier, PopNavigat
         ),
       ),
       onPopPage: (route, value) {
-        return _decreasePages();
+        return route.didPop(_decreasePages());
       },
     );
   }
